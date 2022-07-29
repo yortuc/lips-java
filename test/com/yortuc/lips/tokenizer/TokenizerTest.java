@@ -113,4 +113,23 @@ class TokenizerTest {
 
         assertIterableEquals(expected, result);
     }
+
+    @Test
+    void testTokenizeList(){
+        String expression = "(sum [1 2])";
+
+        Tokenizer tokenizer = new Tokenizer();
+        ArrayList<Token> result = tokenizer.tokenize(expression);
+
+        ArrayList<Token> expected = new ArrayList<Token>(Arrays.asList(
+                new Token("open"),
+                new Token("word", "sum"),
+                new Token("list_open"),
+                new Token("word", "1"), new Token("word", "2"),
+                new Token("list_close"),
+                new Token("close")
+        ));
+
+        assertIterableEquals(expected, result);
+    }
 }

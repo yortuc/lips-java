@@ -1,10 +1,7 @@
 package com.yortuc.lips.tokenizer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class Tokenizer {
 
@@ -55,6 +52,15 @@ public class Tokenizer {
             else if (curChar == ')') {
                 addWord();
                 tokens.add(new Token("close", ""));
+            }
+            else if (curChar == '['){
+                listOpen = true;
+                tokens.add(new Token("list_open"));
+            }
+            else if (curChar == ']'){
+                addWord();
+                tokens.add(new Token("list_close"));
+                listOpen = false;
             }
             else if (curChar == ' ' && !stringOpen) {
                 addWord();

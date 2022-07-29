@@ -12,7 +12,7 @@ public class Token {
     }
 
     public Token(String type){
-        assert type.equals("open") || type.equals("close");
+        assert type.equals("open") || type.equals("close") || type.equals("list_open") || type.equals("list_close");
         this.type = type;
     }
 
